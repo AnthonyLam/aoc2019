@@ -32,6 +32,8 @@ func NewProgram(in chan string, stdin chan int, stdout chan int) *IntcodeProgram
 	for k := range in {
 		program.stack = append(program.stack, split(k)...)
 	}
+	program.stdin = stdin
+	program.stdout = stdout
 	return program
 }
 
@@ -134,9 +136,6 @@ func (pr *IntcodeProgram) Run() []int {
 			pr.increment()
 		default:
 		case EXIT:
-			if pr.stdout != nil {
-				close(pr.stdout)
-			}
 			return pr.stack
 		}
 	}
