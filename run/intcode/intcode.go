@@ -37,6 +37,15 @@ func NewProgram(in chan string, stdin chan int, stdout chan int) *IntcodeProgram
 	return program
 }
 
+func (pr *IntcodeProgram) Copy(stdin, stdout chan int) *IntcodeProgram {
+	program := new(IntcodeProgram)
+	program.ip = pr.ip
+	copy(program.stack, pr.stack)
+	copy(program.stored, pr.stored)
+	program.stdin = stdin
+	program.stdout = stdout
+}
+
 func split(k string) []int {
 	var stack []int
 	strs := strings.Split(k, ",")
