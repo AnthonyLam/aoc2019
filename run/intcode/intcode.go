@@ -22,28 +22,26 @@ type IntcodeProgram struct{
 	stack []int
 	stored []int
 	ip int
-	stdin chan int
-	stdout chan int
 }
 
-func NewProgram(in chan string, stdin chan int, stdout chan int) *IntcodeProgram {
+func NewProgram(in chan string) *IntcodeProgram {
 	program := new(IntcodeProgram)
 	program.ip = 0
 	for k := range in {
 		program.stack = append(program.stack, split(k)...)
 	}
-	program.stdin = stdin
-	program.stdout = stdout
 	return program
 }
 
-func (pr *IntcodeProgram) Copy(stdin, stdout chan int) *IntcodeProgram {
+func (pr *IntcodeProgram) Copy() *IntcodeProgram {
 	program := new(IntcodeProgram)
 	program.ip = pr.ip
+	program.stack = make([]int, len(pr.stack))
 	copy(program.stack, pr.stack)
+	program.stored = make([]int, len(pr.stored))
 	copy(program.stored, pr.stored)
-	program.stdin = stdin
-	program.stdout = stdout
+
+	return program
 }
 
 func split(k string) []int {
@@ -73,7 +71,7 @@ func (pr *IntcodeProgram) Modify(ip int, val int) {
 }
 
 
-func (pr *IntcodeProgram) Run() []int {
+func (pr *IntcodeProgram) Run(stdin, stdout chan int) []int {
 	for {
 		ins := pr.getInstruction()
 		switch ins.opcode {
@@ -95,11 +93,11 @@ func (pr *IntcodeProgram) Run() []int {
 			pr.increment()
 		case INP:
 			pr.increment()
-			ins.param1.write(pr, <-pr.stdin)
+			ins.param1.write(pr, <-stdin)
 			pr.increment()
 		case OUT:
 			pr.increment()
-			pr.stdout <- ins.param1.read(pr)
+			stdout <- ins.param1.read(pr)
 			pr.increment()
 		case JIT:
 			pr.increment()
@@ -145,6 +143,9 @@ func (pr *IntcodeProgram) Run() []int {
 			pr.increment()
 		default:
 		case EXIT:
+			if stdout != nil {
+				close(stdout)
+			}
 			return pr.stack
 		}
 	}

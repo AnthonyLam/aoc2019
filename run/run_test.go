@@ -116,41 +116,41 @@ var opcodeTests = []struct{
 } {
 // Day 5
 	// Part 1
-	//{"5/five_1", []int{1}, 13294380, Five},
-	//
-	//// Part 2
-	//// is eq to 8
-	//{"5/five_2", []int{0}, 0, Five},
-	//{"5/five_2", []int{8}, 1, Five},
-	//// is less than 8
-	//{"5/five_3", []int{0}, 1, Five},
-	//{"5/five_3", []int{7}, 1, Five},
-	//{"5/five_3", []int{8}, 0, Five},
-	//{"5/five_3", []int{9}, 0, Five},
-	//
-	//// is eq to 8
-	//{"5/five_4", []int{0}, 0, Five},
-	//{"5/five_4", []int{8}, 1, Five},
-	//// is less than 8
-	//{"5/five_5", []int{0}, 1, Five},
-	//{"5/five_5", []int{7}, 1, Five},
-	//{"5/five_5", []int{8}, 0, Five},
-	//{"5/five_5", []int{9}, 0, Five},
-	//
-	//// is 0, position
-	//{"5/five_6", []int{0}, 0, Five},
-	//{"5/five_6", []int{8}, 1, Five},
-	//
-	//// is 0, immediate
-	//{"5/five_7", []int{0}, 0, Five},
-	//{"5/five_7", []int{8}, 1, Five},
-	//
-	//// is below 8
-	//{"5/five_8", []int{0}, 999, Five},
-	//{"5/five_8", []int{8}, 1000, Five},
-	//{"5/five_8", []int{9}, 1001, Five},
-	//
-	//{"5/five_1", []int{5}, 11460760, Five},
+	{"5/five_1", []int{1}, 13294380, Five},
+
+	// Part 2
+	// is eq to 8
+	{"5/five_2", []int{0}, 0, Five},
+	{"5/five_2", []int{8}, 1, Five},
+	// is less than 8
+	{"5/five_3", []int{0}, 1, Five},
+	{"5/five_3", []int{7}, 1, Five},
+	{"5/five_3", []int{8}, 0, Five},
+	{"5/five_3", []int{9}, 0, Five},
+
+	// is eq to 8
+	{"5/five_4", []int{0}, 0, Five},
+	{"5/five_4", []int{8}, 1, Five},
+	// is less than 8
+	{"5/five_5", []int{0}, 1, Five},
+	{"5/five_5", []int{7}, 1, Five},
+	{"5/five_5", []int{8}, 0, Five},
+	{"5/five_5", []int{9}, 0, Five},
+
+	// is 0, position
+	{"5/five_6", []int{0}, 0, Five},
+	{"5/five_6", []int{8}, 1, Five},
+
+	// is 0, immediate
+	{"5/five_7", []int{0}, 0, Five},
+	{"5/five_7", []int{8}, 1, Five},
+
+	// is below 8
+	{"5/five_8", []int{0}, 999, Five},
+	{"5/five_8", []int{8}, 1000, Five},
+	{"5/five_8", []int{9}, 1001, Five},
+
+	{"5/five_1", []int{5}, 11460760, Five},
 
 // Day 7
 	// Part 1
@@ -160,9 +160,9 @@ var opcodeTests = []struct{
 	{"7/4", []int{0}, 75228, Seven},
 
 	// Part 2
-	{"7/4", []int{0}, 139629729, Seven},
-	{"7/4", []int{0}, 18216, Seven},
-	{"7/1", []int{0}, 0, Seven},
+	{"7/5", []int{0}, 139629729, Seven2},
+	{"7/6", []int{0}, 18216, Seven2},
+	{"7/4", []int{0}, 79846026, Seven2},
 
 }
 func TestIntcode(t *testing.T) {
