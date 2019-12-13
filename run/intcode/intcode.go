@@ -18,7 +18,7 @@ const (
 	EXIT = 99
 )
 
-const RAM = 100 * 1024
+const RAM = 2 * 1024
 
 type IntcodeProgram struct{
 	stack        []int

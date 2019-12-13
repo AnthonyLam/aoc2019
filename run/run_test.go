@@ -39,12 +39,12 @@ var oneTests = []struct {
 
 // Day 2
 	// Part 1
-	{"2/two_1", []int{2,0,0,0,99}, Two},
-	{"2/two_2", []int{2,3,0,6,99}, Two},
-	{"2/two_3", []int{2,4,4,5,99,9801}, Two},
-	{"2/two_4", []int{30,1,1,4,2,5,6,0,99}, Two},
+	{"2/two_1", 2, Two},
+	{"2/two_2", 2, Two},
+	{"2/two_3", 2, Two},
+	{"2/two_4", 30, Two},
 
-	//{"2/two_5", []int{}, Two}, // Position 0 should be 3931283
+	{"2/two_5", 3931283, Two}, // Position 0 should be 3931283
 
 	// Part 2
 	{"2/two_5", []int{69, 79}, Two2},
@@ -94,8 +94,8 @@ var oneTests = []struct {
 	{"8/2", 2806, Eight},
 
 	// Part 2
-	{"8/3", 1, Eight2},
-	{"8/2", 1, Eight2},
+	{"8/3", -1, Eight2},
+	{"8/2", -1, Eight2},
 }
 
 func Test(t *testing.T) {

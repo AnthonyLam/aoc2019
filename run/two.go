@@ -4,7 +4,7 @@ import "github.com/AnthonyLam/aoc2019/run/intcode"
 
 func Two(in chan string) interface{} {
 	program := intcode.NewProgram(in)
-	return program.Run(nil, nil)
+	return program.Run(nil, nil)[0]
 }
 
 func Two2(in chan string) interface{} {

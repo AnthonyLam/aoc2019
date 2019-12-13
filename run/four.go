@@ -25,24 +25,25 @@ func Four(in chan string) interface{} {
 
 func Four2(in chan string) interface{} {
 	return dofour(in, func(i int) bool {
-		s := strconv.Itoa(i)
-		var prev rune
-		var runlength []rune
+		var prev int = 9
+		var runlength int
 		var hasDouble bool
-		for _, c := range s {
+		for i > 0 {
+			c := i % 10
+			i = i / 10
 			if prev == c {
-				runlength = append(runlength, c)
-			} else if prev > c {
+				runlength++
+			} else if prev < c {
 				return false
 			} else {
-				if len(runlength) == 2 {
+				if runlength == 2 {
 					hasDouble = true
 				}
-				runlength = []rune{prev}
+				runlength = 1
 			}
 			prev = c
 		}
-		if len(runlength) == 2 {
+		if runlength == 2 {
 			hasDouble = true
 		}
 		return hasDouble
