@@ -1,5 +1,11 @@
 package intcode
 
+const (
+	PositionMode = iota
+	ImmediateMode
+	RelativeMode
+)
+
 type Mode interface {
 	read(*IntcodeProgram) int
 	write(*IntcodeProgram, int)
@@ -27,3 +33,12 @@ func (Position) write(program *IntcodeProgram, value int) {
 	program.stack[program.stack[program.ip]] = value
 }
 
+type Relative struct{}
+
+func (Relative) read(program *IntcodeProgram) int {
+	return program.stack[program.stack[program.ip] + program.relativeBase]
+}
+
+func (Relative) write(program *IntcodeProgram, value int) {
+	program.stack[program.stack[program.ip] + program.relativeBase] = value
+}

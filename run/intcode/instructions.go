@@ -1,8 +1,14 @@
 package intcode
 
+const (
+	ParamCount = 3
+	Param1 = 0
+	Param2 = 1
+	Param3 = 2
+
+)
+
 type Instruction struct {
-	param1 Mode
-	param2 Mode
-	param3 Mode
+	modes  [ParamCount]Mode
 	opcode int
 }

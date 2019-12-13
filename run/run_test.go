@@ -87,6 +87,15 @@ var oneTests = []struct {
 	// Part 2
 	{"6/3", 4, Six2},
 	{"6/2", 304, Six2},
+
+// Day 8
+	// Part 1
+	{"8/1", 1, Eight},
+	{"8/2", 2806, Eight},
+
+	// Part 2
+	{"8/3", 1, Eight2},
+	{"8/2", 1, Eight2},
 }
 
 func Test(t *testing.T) {
@@ -158,11 +167,19 @@ var opcodeTests = []struct{
 	{"7/2", []int{0}, 54321, Seven},
 	{"7/3", []int{0}, 65210, Seven},
 	{"7/4", []int{0}, 75228, Seven},
-
 	// Part 2
 	{"7/5", []int{0}, 139629729, Seven2},
 	{"7/6", []int{0}, 18216, Seven2},
 	{"7/4", []int{0}, 79846026, Seven2},
+
+// Day 9
+    // Part 1
+	{"9/1", []int{0}, 99, Nine},
+	{"9/2", []int{0}, 1219070632396864, Nine},
+	{"9/3", []int{0}, 1125899906842624, Nine},
+	{"9/4", []int{1}, 3454977209, Nine},
+	// Part 2
+	{"9/4", []int{2}, 50120, Nine},
 
 }
 func TestIntcode(t *testing.T) {
